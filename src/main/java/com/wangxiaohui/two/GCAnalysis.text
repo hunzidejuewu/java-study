@@ -1,0 +1,19 @@
+-Xmx1g -Xms1g 堆内存都设置了1g
+串行  最大50ms 平均 28.7ms minorGc 13 fullGC 2
+并行  最大50ms 平均 13.5ms minorGc 30 fullGC 2
+并发  最大60ms 平均 21.1ms Gc 19
+G1	  最大21ms 平均3.42ms  Gc 69
+
+-Xmx4g -Xms1g 堆内存都设置了4g
+串行  最大90ms 平均 70ms minorGc 4 fullGC 0
+并行  最大40ms 平均 38ms minorGc 5 fullGC 0
+并发  最大40ms 平均 36ms Gc 11
+G1	  最大26.9ms 平均13.7ms  Gc 14
+
+
+堆内存变大gc次数变少但是gc时间会变长
+并行平均少了一半因为多线程的缘故清理的比串行的快总时间差不多
+G1是最快的
+zgc我没有试
+堆小的时候串行和并行差不大。g1反而可能整体效率低一些。
+堆越大zgc > g1 > 其他gc
